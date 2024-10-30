@@ -1,5 +1,4 @@
-
-# Wildcard 
+# Wildcard
 
 Wildcard is a decentralized social media protocol. It is building new social media primitive at the cusp of creator and attention economy.
 
@@ -29,11 +28,10 @@ Start the server
   pnpm run dev
 ```
 
-
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
-```bash 
+```bash
   cp .env.example .env.local
 ```
