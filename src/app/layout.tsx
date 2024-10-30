@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import PrivyProvider from "./auth/PrivyProvider";
+import PrivyProvider from "@/utils/auth/PrivyProvider";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
