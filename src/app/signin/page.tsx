@@ -6,7 +6,7 @@ import React from "react";
 const Signin = () => {
   const { ready, authenticated, login, getAccessToken } = usePrivy();
 
-  console.log('getAccessToken', getAccessToken());
+  console.log("getAccessToken", getAccessToken());
 
   return (
     <div>
