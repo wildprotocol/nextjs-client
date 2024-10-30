@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@privy-io/react-auth": "^1.92.3",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18"
