@@ -7,7 +7,7 @@ export default function PrivyProvider({
 }: {
   children: React.ReactNode;
 }) {
-    const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
+  const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
 
   return (
     <Privy
