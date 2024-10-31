@@ -19,7 +19,7 @@ export default async function middleware(req: NextRequest) {
 
   if (isProtectedRoute && !token) {
     return NextResponse.redirect(
-      new URL("/signin?redirect=" + path, req.nextUrl)
+      new URL("/signin?redirect=" + path, req.nextUrl),
     );
   }
 
@@ -31,7 +31,7 @@ export default async function middleware(req: NextRequest) {
   } catch {
     // If the token is invalid, redirect to the login page
     return NextResponse.redirect(
-      new URL("/signin?redirect=" + path, req.nextUrl)
+      new URL("/signin?redirect=" + path, req.nextUrl),
     );
   }
 }
