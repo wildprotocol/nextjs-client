@@ -25,8 +25,6 @@ export default async function middleware(req: NextRequest) {
     // If the token is invalid, redirect to the login page
     return NextResponse.redirect(new URL("/signin", req.nextUrl));
   }
-
-  return NextResponse.next();
 }
 
 // Apply middleware only to specific routes
