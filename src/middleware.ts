@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { getPrivyClient } from "./utils/privy-server-client";
 
 const protectedRoutes = ["/dashboard", "/protected"];
+const authRoutes = ["/signin"];
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
@@ -12,8 +13,14 @@ export default async function middleware(req: NextRequest) {
   const sessionCookie = cookies().get("privy-token");
   const token = sessionCookie?.value || "";
 
+  if (authRoutes.includes(path)) {
+    return NextResponse.next();
+  }
+
   if (isProtectedRoute && !token) {
-    return NextResponse.redirect(new URL("/signin", req.nextUrl));
+    return NextResponse.redirect(
+      new URL("/signin?redirect=" + path, req.nextUrl)
+    );
   }
 
   try {
@@ -23,11 +30,13 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.next();
   } catch {
     // If the token is invalid, redirect to the login page
-    return NextResponse.redirect(new URL("/signin", req.nextUrl));
+    return NextResponse.redirect(
+      new URL("/signin?redirect=" + path, req.nextUrl)
+    );
   }
 }
 
-// Apply middleware only to specific routes
+// Apply middleware to all routes
 export const config = {
-  matcher: ["/dashboard", "/protected"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
